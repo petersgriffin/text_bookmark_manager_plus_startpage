@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="default_favicon.png"/>
+    <!-- https://alligator.io/css/collapsible/ -->
+    <style>
+body {
+    line-height: 1.25;
+    font-size: 15px;
+    background: #fdfffd;
+}
+
+.wrap-collabsible {
+ border: 1px solid #ddd;
+ margin: 1px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  padding: 1px;
+  margin: 1px;
+
+  color: #141;
+  background: #dfd;
+
+  transition: all 0.25s ease-out;
+
+  border: 1px solid #9a9;
+}
+
+.lbl-toggle:hover {
+  color: #393;
+  background: #afa;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-left: 8px;
+  transform: translateY(-2px);
+
+  transition: transform .1s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100%;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  padding: 1px;
+}
+
+
+
+
+
+.main{
+  display: table;
+  width: 100%;
+}
+
+.column {
+    width: 25%;
+    display: table-cell;
+    padding-right: 1px;
+    margin: 1px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+li {
+    display: flex;
+    max-width: 272px;
+    margin: 0;
+}
+
+li a {
+    overflow: hidden;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+img {
+    margin-left: 1px;
+    margin-right: 3px;
+}
+
+a:link {
+    color: #161;
+    text-decoration: none;
+}
+a:visited {
+    color: #161;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+    background-color: #afa;
+    text-decoration: underline;
+}
+a:active {
+    color: #9f9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+    </style>
+  </head>
+  <body>
+    <span>
+<form action="http://www.google.com/search?hl=en-GB&source=hp&q=" method="get" id="start_search_url_form" autocomplete="off">
+    <div class="autocomplete">
+      <input type="text" name="q" id="start_search_url_box" size="184" autofocus/>
+      <input type="submit" value="Proceed!" id="start_search_url_button"/>
+    </div>
+</form>
+    </span>
+    <div class="main">
+    <div class="column">
+      
+        
+      <div class="wrap-collabsible">
+        <input id="collapsible_GIT" class="toggle" type="checkbox" checked>
+        <label for="collapsible_GIT" class="lbl-toggle">GIT</label>
+      <div class="collapsible-content" name="GIT">
+        <div class="content-inner">
+      <div class="wrap-collabsible">
+        <input id="collapsible_GIT/BLOG" class="toggle" type="checkbox" >
+        <label for="collapsible_GIT/BLOG" class="lbl-toggle">GIT/BLOG</label>
+      <div class="collapsible-content" name="GIT/BLOG">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="The GitHub Blog" href="https://github.blog/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              The GitHub Blog
+            </a>
+          </li>
+          <li class="link">
+            <a title="Remote work: Sales and Support on being customer-centric while working remotely" href="https://github.blog/2020-07-10-remote-work-sales-and-support-on-being-customer-centric-while-working-remotely/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              Remote work: Sales and Support on being customer-centric while working remotely
+            </a>
+          </li>
+          <li class="link">
+            <a title="Vulcanizer: a library for operating Elasticsearch" href="https://github.blog/2019-03-05-vulcanizer-a-library-for-operating-elasticsearch/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              Vulcanizer: a library for operating Elasticsearch
+            </a>
+          </li>
+          <li class="link">
+            <a title="Sawfish phishing campaign targets GitHub users" href="https://github.blog/2020-04-14-sawfish-phishing-campaign-targets-github-users/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              Sawfish phishing campaign targets GitHub users
+            </a>
+          </li>
+          <li class="link">
+            <a title="Behind the scenes: GitHub security alerts" href="https://github.blog/2019-12-11-behind-the-scenes-github-vulnerability-alerts/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              Behind the scenes: GitHub security alerts
+            </a>
+          </li>
+          <li class="link">
+            <a title="Transit and Peering: How your requests reach GitHub" href="https://github.blog/2017-10-12-transit-and-peering-how-your-requests-reach-github/">
+              <img src="favicons/github.blog/favicon.png" width="16" height="16px" class="favorite"/>
+              Transit and Peering: How your requests reach GitHub
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div><ul>
+          <li class="link">
+            <a title="GitHub Developer Documentation" href="https://docs.github.com/en/developers">
+              <img src="favicons/docs.github.com/favicon.png" width="16" height="16px" class="favorite"/>
+              GitHub Developer Documentation
+            </a>
+          </li>
+          <li class="link">
+            <a title="GitHub System Status Page" href="https://www.githubstatus.com/">
+              <img src="favicons/www.githubstatus.com/favicon.png" width="16" height="16px" class="favorite"/>
+              GitHub System Status Page
+            </a>
+          </li>
+          <li class="link">
+            <a title="Security at GitHub" href="https://github.com/security">
+              <img src="favicons/github.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Security at GitHub
+            </a>
+          </li>
+          <li class="link">
+            <a title="GitHub Security Advisories" href="https://github.com/advisories">
+              <img src="favicons/github.com/favicon.png" width="16" height="16px" class="favorite"/>
+              GitHub Security Advisories
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>    
+      
+    </div>
+    
+    <div class="column">
+      
+        
+      <div class="wrap-collabsible">
+        <input id="collapsible_PYTHON" class="toggle" type="checkbox" checked>
+        <label for="collapsible_PYTHON" class="lbl-toggle">PYTHON</label>
+      <div class="collapsible-content" name="PYTHON">
+        <div class="content-inner">
+      <div class="wrap-collabsible">
+        <input id="collapsible_PYTHON/OFFICIAL" class="toggle" type="checkbox" >
+        <label for="collapsible_PYTHON/OFFICIAL" class="lbl-toggle">PYTHON/OFFICIAL</label>
+      <div class="collapsible-content" name="PYTHON/OFFICIAL">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="What's New In Python 3.8" href="https://docs.python.org/3/whatsnew/3.8.html">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              What's New In Python 3.8
+            </a>
+          </li>
+          <li class="link">
+            <a title="The Python Standard Library" href="https://docs.python.org/3/library/">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              The Python Standard Library
+            </a>
+          </li>
+          <li class="link">
+            <a title="Built-in Functions" href="https://docs.python.org/3/library/functions.html">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              Built-in Functions
+            </a>
+          </li>
+          <li class="link">
+            <a title="Built-in Packaging / Import System" href="https://docs.python.org/3/reference/import.html">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              Built-in Packaging / Import System
+            </a>
+          </li>
+          <li class="link">
+            <a title="Brief Tour of the Standard Library" href="https://docs.python.org/3/tutorial/stdlib.html">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              Brief Tour of the Standard Library
+            </a>
+          </li>
+          <li class="link">
+            <a title="Brief Tour of the Standard Library — Part II" href="https://docs.python.org/3/tutorial/stdlib2.html">
+              <img src="favicons/docs.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              Brief Tour of the Standard Library — Part II
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>
+      <div class="wrap-collabsible">
+        <input id="collapsible_PYTHON/PEPs" class="toggle" type="checkbox" >
+        <label for="collapsible_PYTHON/PEPs" class="lbl-toggle">PYTHON/PEPs</label>
+      <div class="collapsible-content" name="PYTHON/PEPs">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="PEP 8 -- Style Guide for Python Code" href="https://www.python.org/dev/peps/pep-0008/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 8 -- Style Guide for Python Code
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 20 -- The Zen of Python" href="https://www.python.org/dev/peps/pep-0020/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 20 -- The Zen of Python
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 257 -- Docstring Conventions" href="https://www.python.org/dev/peps/pep-0257/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 257 -- Docstring Conventions
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 428 -- The pathlib module -- object-oriented filesystem paths" href="https://www.python.org/dev/peps/pep-0428/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 428 -- The pathlib module -- object-oriented filesystem paths
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 484 -- Type Hints" href="https://www.python.org/dev/peps/pep-0484/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 484 -- Type Hints
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 498 -- Literal String Interpolation" href="https://www.python.org/dev/peps/pep-0498/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 498 -- Literal String Interpolation
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 526 -- Syntax for Variable Annotations" href="https://www.python.org/dev/peps/pep-0526/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 526 -- Syntax for Variable Annotations
+            </a>
+          </li>
+          <li class="link">
+            <a title="PEP 3120 -- Using UTF-8 as the default source encoding (3.0)" href="https://www.python.org/dev/peps/pep-3120/">
+              <img src="favicons/www.python.org/favicon.png" width="16" height="16px" class="favorite"/>
+              PEP 3120 -- Using UTF-8 as the default source encoding (3.0)
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div><ul>
+          <li class="link">
+            <a title="Writing Idiomatic Python (book)" href="https://www.jeffknupp.com/writing-idiomatic-python-ebook/">
+              <img src="favicons/www.jeffknupp.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Writing Idiomatic Python (book)
+            </a>
+          </li>
+          <li class="link">
+            <a title="wtfpython -- Exploring and understanding Python through surprising snippets" href="https://github.com/satwikkansal/wtfpython/blob/master/README.md">
+              <img src="favicons/github.com/favicon.png" width="16" height="16px" class="favorite"/>
+              wtfpython -- Exploring and understanding Python through surprising snippets
+            </a>
+          </li>
+          <li class="link">
+            <a title="Nifty Python tricks" href="https://yasoob.me/2015/04/19/nifty-python-tricks/">
+              <img src="favicons/yasoob.me/favicon.png" width="16" height="16px" class="favorite"/>
+              Nifty Python tricks
+            </a>
+          </li>
+          <li class="link">
+            <a title="Jinja -- templating language for Python" href="https://jinja.palletsprojects.com/en/2.11.x/">
+              <img src="favicons/jinja.palletsprojects.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Jinja -- templating language for Python
+            </a>
+          </li>
+          <li class="link">
+            <a title="Flask -- lightweight WSGI web application framework" href="https://flask.palletsprojects.com/en/1.1.x/">
+              <img src="favicons/flask.palletsprojects.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Flask -- lightweight WSGI web application framework
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>    
+      
+    </div>
+    
+    <div class="column">
+      
+        
+      <div class="wrap-collabsible">
+        <input id="collapsible_BASH" class="toggle" type="checkbox" checked>
+        <label for="collapsible_BASH" class="lbl-toggle">BASH</label>
+      <div class="collapsible-content" name="BASH">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="Bash Pitfalls" href="http://mywiki.wooledge.org/BashPitfalls">
+              <img src="favicons/mywiki.wooledge.org/favicon.png" width="16" height="16px" class="favorite"/>
+              Bash Pitfalls
+            </a>
+          </li>
+          <li class="link">
+            <a title="Shell Style Guide (Google)" href="https://google.github.io/styleguide/shellguide.html">
+              <img src="favicons/google.github.io/favicon.png" width="16" height="16px" class="favorite"/>
+              Shell Style Guide (Google)
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>    
+      
+        
+      <div class="wrap-collabsible">
+        <input id="collapsible_AWS" class="toggle" type="checkbox" checked>
+        <label for="collapsible_AWS" class="lbl-toggle">AWS</label>
+      <div class="collapsible-content" name="AWS">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="AWS Command Line Interface Documentation" href="https://docs.aws.amazon.com/cli/index.html">
+              <img src="favicons/docs.aws.amazon.com/favicon.png" width="16" height="16px" class="favorite"/>
+              AWS Command Line Interface Documentation
+            </a>
+          </li>
+          <li class="link">
+            <a title="AWS Elastic Compute Cloud -- Storage Guide" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html">
+              <img src="favicons/docs.aws.amazon.com/favicon.png" width="16" height="16px" class="favorite"/>
+              AWS Elastic Compute Cloud -- Storage Guide
+            </a>
+          </li>
+          <li class="link">
+            <a title="AWS Lambda Documentation" href="https://docs.aws.amazon.com/lambda/">
+              <img src="favicons/docs.aws.amazon.com/favicon.png" width="16" height="16px" class="favorite"/>
+              AWS Lambda Documentation
+            </a>
+          </li>
+          <li class="link">
+            <a title="Amazon Elasticsearch Service Documentation" href="https://docs.aws.amazon.com/elasticsearch-service/">
+              <img src="favicons/docs.aws.amazon.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Amazon Elasticsearch Service Documentation
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>    
+      
+    </div>
+    
+    <div class="column">
+      
+        
+      <div class="wrap-collabsible">
+        <input id="collapsible_bookmarks" class="toggle" type="checkbox" checked>
+        <label for="collapsible_bookmarks" class="lbl-toggle">bookmarks</label>
+      <div class="collapsible-content" name="bookmarks">
+        <div class="content-inner"><ul>
+          <li class="link">
+            <a title="Tufte CSS" href="http://www.daveliepmann.com/tufte-css/">
+              <img src="favicons/www.daveliepmann.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Tufte CSS
+            </a>
+          </li>
+          <li class="link">
+            <a title="Pro Git (book) by Scott Chacon and Ben Straub" href="https://www.git-scm.com/book/en/v2">
+              <img src="favicons/www.git-scm.com/favicon.png" width="16" height="16px" class="favorite"/>
+              Pro Git (book) by Scott Chacon and Ben Straub
+            </a>
+          </li>
+        </div>
+        </ul>
+      </div>
+     </div>    
+      
+    </div>
+    </div>
+    <script>
+
+
+let coll = document.getElementsByClassName("collapsible_header");
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+};
+
+let start_search_url_form = document.getElementById("start_search_url_form");
+let start_search_url_box = document.getElementById("start_search_url_box");
+
+let autocompletes = [{'type_text': 'Tufte CSS', 'url': 'http://www.daveliepmann.com/tufte-css/', 'title': '', 'domain': 'www.daveliepmann.com'}, {'type_text': 'yasoob.me', 'url': 'https://yasoob.me', 'title': '', 'domain': 'yasoob.me'}, {'type_text': 'python.org', 'url': 'https://www.python.org', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'github.com', 'url': 'https://github.com', 'title': '', 'domain': 'github.com'}, {'type_text': 'git-scm.com', 'url': 'https://www.git-scm.com', 'title': '', 'domain': 'www.git-scm.com'}, {'type_text': 'github.blog', 'url': 'https://github.blog', 'title': '', 'domain': 'github.blog'}, {'type_text': 'github.blog', 'url': 'https://github.blog', 'title': 'The GitHub Blog', 'domain': 'github.blog'}, {'type_text': 'Bash Pitfalls', 'url': 'http://mywiki.wooledge.org/BashPitfalls', 'title': '', 'domain': 'mywiki.wooledge.org'}, {'type_text': 'jeffknupp.com', 'url': 'https://www.jeffknupp.com', 'title': '', 'domain': 'www.jeffknupp.com'}, {'type_text': 'www.python.org', 'url': 'https://www.python.org', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'docs.github.com', 'url': 'https://docs.github.com', 'title': '', 'domain': 'docs.github.com'}, {'type_text': 'www.git-scm.com', 'url': 'https://www.git-scm.com', 'title': '', 'domain': 'www.git-scm.com'}, {'type_text': 'The GitHub Blog', 'url': 'https://github.blog/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'docs.python.org', 'url': 'https://docs.python.org', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'githubstatus.com', 'url': 'https://www.githubstatus.com', 'title': 'GitHub System Status Page', 'domain': 'www.githubstatus.com'}, {'type_text': 'githubstatus.com', 'url': 'https://www.githubstatus.com', 'title': '', 'domain': 'www.githubstatus.com'}, {'type_text': 'google.github.io', 'url': 'https://google.github.io', 'title': '', 'domain': 'google.github.io'}, {'type_text': 'daveliepmann.com', 'url': 'http://www.daveliepmann.com', 'title': '', 'domain': 'www.daveliepmann.com'}, {'type_text': 'www.jeffknupp.com', 'url': 'https://www.jeffknupp.com', 'title': '', 'domain': 'www.jeffknupp.com'}, {'type_text': 'Built-in Functions', 'url': 'https://docs.python.org/3/library/functions.html', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'Security at GitHub', 'url': 'https://github.com/security', 'title': '', 'domain': 'github.com'}, {'type_text': 'Nifty Python tricks', 'url': 'https://yasoob.me/2015/04/19/nifty-python-tricks/', 'title': '', 'domain': 'yasoob.me'}, {'type_text': 'mywiki.wooledge.org', 'url': 'http://mywiki.wooledge.org', 'title': '', 'domain': 'mywiki.wooledge.org'}, {'type_text': 'docs.aws.amazon.com', 'url': 'https://docs.aws.amazon.com', 'title': '', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'github.com/security', 'url': 'https://github.com/security', 'title': 'Security at GitHub', 'domain': 'github.com'}, {'type_text': 'www.githubstatus.com', 'url': 'https://www.githubstatus.com', 'title': 'GitHub System Status Page', 'domain': 'www.githubstatus.com'}, {'type_text': 'www.githubstatus.com', 'url': 'https://www.githubstatus.com', 'title': '', 'domain': 'www.githubstatus.com'}, {'type_text': 'www.daveliepmann.com', 'url': 'http://www.daveliepmann.com', 'title': '', 'domain': 'www.daveliepmann.com'}, {'type_text': 'github.com/advisories', 'url': 'https://github.com/advisories', 'title': 'GitHub Security Advisories', 'domain': 'github.com'}, {'type_text': 'PEP 484 -- Type Hints', 'url': 'https://www.python.org/dev/peps/pep-0484/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'git-scm.com/book/en/v2', 'url': 'https://www.git-scm.com/book/en/v2', 'title': 'Pro Git (book) by Scott Chacon and Ben Straub', 'domain': 'www.git-scm.com'}, {'type_text': "What's New In Python 3.8", 'url': 'https://docs.python.org/3/whatsnew/3.8.html', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'AWS Lambda Documentation', 'url': 'https://docs.aws.amazon.com/lambda/', 'title': '', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'GitHub System Status Page', 'url': 'https://www.githubstatus.com/', 'title': '', 'domain': 'www.githubstatus.com'}, {'type_text': 'jinja.palletsprojects.com', 'url': 'https://jinja.palletsprojects.com', 'title': '', 'domain': 'jinja.palletsprojects.com'}, {'type_text': 'flask.palletsprojects.com', 'url': 'https://flask.palletsprojects.com', 'title': '', 'domain': 'flask.palletsprojects.com'}, {'type_text': 'docs.python.org/3/library/', 'url': 'https://docs.python.org/3/library/', 'title': 'The Python Standard Library', 'domain': 'docs.python.org'}, {'type_text': 'GitHub Security Advisories', 'url': 'https://github.com/advisories', 'title': '', 'domain': 'github.com'}, {'type_text': 'www.git-scm.com/book/en/v2', 'url': 'https://www.git-scm.com/book/en/v2', 'title': 'Pro Git (book) by Scott Chacon and Ben Straub', 'domain': 'www.git-scm.com'}, {'type_text': 'Shell Style Guide (Google)', 'url': 'https://google.github.io/styleguide/shellguide.html', 'title': '', 'domain': 'google.github.io'}, {'type_text': 'daveliepmann.com/tufte-css/', 'url': 'http://www.daveliepmann.com/tufte-css/', 'title': 'Tufte CSS', 'domain': 'www.daveliepmann.com'}, {'type_text': 'PEP 20 -- The Zen of Python', 'url': 'https://www.python.org/dev/peps/pep-0020/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'docs.aws.amazon.com/lambda/', 'url': 'https://docs.aws.amazon.com/lambda/', 'title': 'AWS Lambda Documentation', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'The Python Standard Library', 'url': 'https://docs.python.org/3/library/', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'python.org/dev/peps/pep-0020/', 'url': 'https://www.python.org/dev/peps/pep-0020/', 'title': 'PEP 20 -- The Zen of Python', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0526/', 'url': 'https://www.python.org/dev/peps/pep-0526/', 'title': 'PEP 526 -- Syntax for Variable Annotations', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0484/', 'url': 'https://www.python.org/dev/peps/pep-0484/', 'title': 'PEP 484 -- Type Hints', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0257/', 'url': 'https://www.python.org/dev/peps/pep-0257/', 'title': 'PEP 257 -- Docstring Conventions', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0008/', 'url': 'https://www.python.org/dev/peps/pep-0008/', 'title': 'PEP 8 -- Style Guide for Python Code', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0498/', 'url': 'https://www.python.org/dev/peps/pep-0498/', 'title': 'PEP 498 -- Literal String Interpolation', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-3120/', 'url': 'https://www.python.org/dev/peps/pep-3120/', 'title': 'PEP 3120 -- Using UTF-8 as the default source encoding (3.0)', 'domain': 'www.python.org'}, {'type_text': 'python.org/dev/peps/pep-0428/', 'url': 'https://www.python.org/dev/peps/pep-0428/', 'title': 'PEP 428 -- The pathlib module -- object-oriented filesystem paths', 'domain': 'www.python.org'}, {'type_text': 'docs.github.com/en/developers', 'url': 'https://docs.github.com/en/developers', 'title': 'GitHub Developer Documentation', 'domain': 'docs.github.com'}, {'type_text': 'GitHub Developer Documentation', 'url': 'https://docs.github.com/en/developers', 'title': '', 'domain': 'docs.github.com'}, {'type_text': 'www.daveliepmann.com/tufte-css/', 'url': 'http://www.daveliepmann.com/tufte-css/', 'title': 'Tufte CSS', 'domain': 'www.daveliepmann.com'}, {'type_text': 'Writing Idiomatic Python (book)', 'url': 'https://www.jeffknupp.com/writing-idiomatic-python-ebook/', 'title': '', 'domain': 'www.jeffknupp.com'}, {'type_text': 'PEP 257 -- Docstring Conventions', 'url': 'https://www.python.org/dev/peps/pep-0257/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'mywiki.wooledge.org/BashPitfalls', 'url': 'http://mywiki.wooledge.org/BashPitfalls', 'title': 'Bash Pitfalls', 'domain': 'mywiki.wooledge.org'}, {'type_text': 'www.python.org/dev/peps/pep-0484/', 'url': 'https://www.python.org/dev/peps/pep-0484/', 'title': 'PEP 484 -- Type Hints', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0008/', 'url': 'https://www.python.org/dev/peps/pep-0008/', 'title': 'PEP 8 -- Style Guide for Python Code', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0498/', 'url': 'https://www.python.org/dev/peps/pep-0498/', 'title': 'PEP 498 -- Literal String Interpolation', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0257/', 'url': 'https://www.python.org/dev/peps/pep-0257/', 'title': 'PEP 257 -- Docstring Conventions', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-3120/', 'url': 'https://www.python.org/dev/peps/pep-3120/', 'title': 'PEP 3120 -- Using UTF-8 as the default source encoding (3.0)', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0526/', 'url': 'https://www.python.org/dev/peps/pep-0526/', 'title': 'PEP 526 -- Syntax for Variable Annotations', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0428/', 'url': 'https://www.python.org/dev/peps/pep-0428/', 'title': 'PEP 428 -- The pathlib module -- object-oriented filesystem paths', 'domain': 'www.python.org'}, {'type_text': 'www.python.org/dev/peps/pep-0020/', 'url': 'https://www.python.org/dev/peps/pep-0020/', 'title': 'PEP 20 -- The Zen of Python', 'domain': 'www.python.org'}, {'type_text': 'Brief Tour of the Standard Library', 'url': 'https://docs.python.org/3/tutorial/stdlib.html', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'docs.aws.amazon.com/cli/index.html', 'url': 'https://docs.aws.amazon.com/cli/index.html', 'title': 'AWS Command Line Interface Documentation', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'Built-in Packaging / Import System', 'url': 'https://docs.python.org/3/reference/import.html', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'docs.python.org/3/whatsnew/3.8.html', 'url': 'https://docs.python.org/3/whatsnew/3.8.html', 'title': "What's New In Python 3.8", 'domain': 'docs.python.org'}, {'type_text': 'flask.palletsprojects.com/en/1.1.x/', 'url': 'https://flask.palletsprojects.com/en/1.1.x/', 'title': 'Flask -- lightweight WSGI web application framework', 'domain': 'flask.palletsprojects.com'}, {'type_text': 'PEP 8 -- Style Guide for Python Code', 'url': 'https://www.python.org/dev/peps/pep-0008/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'jinja.palletsprojects.com/en/2.11.x/', 'url': 'https://jinja.palletsprojects.com/en/2.11.x/', 'title': 'Jinja -- templating language for Python', 'domain': 'jinja.palletsprojects.com'}, {'type_text': 'docs.python.org/3/tutorial/stdlib.html', 'url': 'https://docs.python.org/3/tutorial/stdlib.html', 'title': 'Brief Tour of the Standard Library', 'domain': 'docs.python.org'}, {'type_text': 'docs.python.org/3/reference/import.html', 'url': 'https://docs.python.org/3/reference/import.html', 'title': 'Built-in Packaging / Import System', 'domain': 'docs.python.org'}, {'type_text': 'PEP 498 -- Literal String Interpolation', 'url': 'https://www.python.org/dev/peps/pep-0498/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'Jinja -- templating language for Python', 'url': 'https://jinja.palletsprojects.com/en/2.11.x/', 'title': '', 'domain': 'jinja.palletsprojects.com'}, {'type_text': 'docs.python.org/3/tutorial/stdlib2.html', 'url': 'https://docs.python.org/3/tutorial/stdlib2.html', 'title': 'Brief Tour of the Standard Library — Part II', 'domain': 'docs.python.org'}, {'type_text': 'docs.python.org/3/library/functions.html', 'url': 'https://docs.python.org/3/library/functions.html', 'title': 'Built-in Functions', 'domain': 'docs.python.org'}, {'type_text': 'AWS Command Line Interface Documentation', 'url': 'https://docs.aws.amazon.com/cli/index.html', 'title': '', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'yasoob.me/2015/04/19/nifty-python-tricks/', 'url': 'https://yasoob.me/2015/04/19/nifty-python-tricks/', 'title': 'Nifty Python tricks', 'domain': 'yasoob.me'}, {'type_text': 'Behind the scenes: GitHub security alerts', 'url': 'https://github.blog/2019-12-11-behind-the-scenes-github-vulnerability-alerts/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'docs.aws.amazon.com/elasticsearch-service/', 'url': 'https://docs.aws.amazon.com/elasticsearch-service/', 'title': 'Amazon Elasticsearch Service Documentation', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'PEP 526 -- Syntax for Variable Annotations', 'url': 'https://www.python.org/dev/peps/pep-0526/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'Amazon Elasticsearch Service Documentation', 'url': 'https://docs.aws.amazon.com/elasticsearch-service/', 'title': '', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'AWS Elastic Compute Cloud -- Storage Guide', 'url': 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html', 'title': '', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'google.github.io/styleguide/shellguide.html', 'url': 'https://google.github.io/styleguide/shellguide.html', 'title': 'Shell Style Guide (Google)', 'domain': 'google.github.io'}, {'type_text': 'Brief Tour of the Standard Library — Part II', 'url': 'https://docs.python.org/3/tutorial/stdlib2.html', 'title': '', 'domain': 'docs.python.org'}, {'type_text': 'jeffknupp.com/writing-idiomatic-python-ebook/', 'url': 'https://www.jeffknupp.com/writing-idiomatic-python-ebook/', 'title': 'Writing Idiomatic Python (book)', 'domain': 'www.jeffknupp.com'}, {'type_text': 'Pro Git (book) by Scott Chacon and Ben Straub', 'url': 'https://www.git-scm.com/book/en/v2', 'title': '', 'domain': 'www.git-scm.com'}, {'type_text': 'Sawfish phishing campaign targets GitHub users', 'url': 'https://github.blog/2020-04-14-sawfish-phishing-campaign-targets-github-users/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'Vulcanizer: a library for operating Elasticsearch', 'url': 'https://github.blog/2019-03-05-vulcanizer-a-library-for-operating-elasticsearch/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'www.jeffknupp.com/writing-idiomatic-python-ebook/', 'url': 'https://www.jeffknupp.com/writing-idiomatic-python-ebook/', 'title': 'Writing Idiomatic Python (book)', 'domain': 'www.jeffknupp.com'}, {'type_text': 'Flask -- lightweight WSGI web application framework', 'url': 'https://flask.palletsprojects.com/en/1.1.x/', 'title': '', 'domain': 'flask.palletsprojects.com'}, {'type_text': 'Transit and Peering: How your requests reach GitHub', 'url': 'https://github.blog/2017-10-12-transit-and-peering-how-your-requests-reach-github/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'github.com/satwikkansal/wtfpython/blob/master/README.md', 'url': 'https://github.com/satwikkansal/wtfpython/blob/master/README.md', 'title': 'wtfpython -- Exploring and understanding Python through surprising snippets', 'domain': 'github.com'}, {'type_text': 'docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html', 'url': 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html', 'title': 'AWS Elastic Compute Cloud -- Storage Guide', 'domain': 'docs.aws.amazon.com'}, {'type_text': 'PEP 3120 -- Using UTF-8 as the default source encoding (3.0)', 'url': 'https://www.python.org/dev/peps/pep-3120/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'PEP 428 -- The pathlib module -- object-oriented filesystem paths', 'url': 'https://www.python.org/dev/peps/pep-0428/', 'title': '', 'domain': 'www.python.org'}, {'type_text': 'github.blog/2019-12-11-behind-the-scenes-github-vulnerability-alerts/', 'url': 'https://github.blog/2019-12-11-behind-the-scenes-github-vulnerability-alerts/', 'title': 'Behind the scenes: GitHub security alerts', 'domain': 'github.blog'}, {'type_text': 'github.blog/2020-04-14-sawfish-phishing-campaign-targets-github-users/', 'url': 'https://github.blog/2020-04-14-sawfish-phishing-campaign-targets-github-users/', 'title': 'Sawfish phishing campaign targets GitHub users', 'domain': 'github.blog'}, {'type_text': 'github.blog/2019-03-05-vulcanizer-a-library-for-operating-elasticsearch/', 'url': 'https://github.blog/2019-03-05-vulcanizer-a-library-for-operating-elasticsearch/', 'title': 'Vulcanizer: a library for operating Elasticsearch', 'domain': 'github.blog'}, {'type_text': 'github.blog/2017-10-12-transit-and-peering-how-your-requests-reach-github/', 'url': 'https://github.blog/2017-10-12-transit-and-peering-how-your-requests-reach-github/', 'title': 'Transit and Peering: How your requests reach GitHub', 'domain': 'github.blog'}, {'type_text': 'wtfpython -- Exploring and understanding Python through surprising snippets', 'url': 'https://github.com/satwikkansal/wtfpython/blob/master/README.md', 'title': '', 'domain': 'github.com'}, {'type_text': 'Remote work: Sales and Support on being customer-centric while working remotely', 'url': 'https://github.blog/2020-07-10-remote-work-sales-and-support-on-being-customer-centric-while-working-remotely/', 'title': '', 'domain': 'github.blog'}, {'type_text': 'github.blog/2020-07-10-remote-work-sales-and-support-on-being-customer-centric-while-working-remotely/', 'url': 'https://github.blog/2020-07-10-remote-work-sales-and-support-on-being-customer-centric-while-working-remotely/', 'title': 'Remote work: Sales and Support on being customer-centric while working remotely', 'domain': 'github.blog'}];
+
+// https://www.w3schools.com/howto/howto_js_autocomplete.asp
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;``
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].type_text.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "";
+          if (arr[i].domain.length > 0) {
+            b.innerHTML += ' <img src="favicons/' + arr[i].domain + '/favicon.png" width="16" height="16px"/>';
+          }
+          b.innerHTML += "<strong>" + arr[i].type_text.substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].type_text.substr(val.length);
+          if (arr[i].title.length > 0) {
+            b.innerHTML += " <strong> " + arr[i].title + "</strong>";
+          }
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i].url + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              // inp.value = this.getElementsByTagName("input")[0].value;
+              inp.value = this.getElementsByTagName("input")[0].value;
+
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+              if (inp.value.startsWith("http://") || inp.value.startsWith("https://")) {
+                window.location.replace(inp.value);
+              } else {
+                start_search_url_form.submit();
+              }
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+          return;
+        }
+        if (x) {
+            if(x[0]) { 
+                // if nothing is highlighted, sim-click the top
+                // there will never be an external search for a full-url autocomplete
+                x[0].click();   
+                return;
+            }       
+        }
+        start_search_url_form.submit();
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+  /*close all autocomplete lists in the document,
+  except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+};
+
+autocomplete(document.getElementById("start_search_url_box"), autocompletes);
+
+
+let myLabels = document.querySelectorAll('.lbl-toggle');
+
+// TODO: WASD / HJKL keyboard navigation goes here.
+// Array.from(myLabels).forEach(label => {
+//   label.addEventListener('keydown', e => {
+//     // 32 === spacebar
+//     // 13 === enter
+//     if (e.which === 32 || e.which === 13) {
+//       e.preventDefault();
+//       label.click();
+//     };
+//   });
+// });
+    </script>
+  </body>
+</html>
