@@ -5,6 +5,9 @@ Text File Bookmarks / Startpage
 3. Supports export of Chromium-family or Safari browser bookmarks
 4. Can fully replace browser start pages without requiring 3rd party extension software installation (a security risk)
 
+Demo Startpage (also contained in the example/ folder):
+https://petergriff.in/bookmark_startpage/demo_startpage/startpage.html
+
 
 Bookmark Format:
 
