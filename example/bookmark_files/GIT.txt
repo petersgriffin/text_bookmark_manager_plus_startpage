@@ -1,0 +1,11 @@
+GitHub Developer Documentation
+https://docs.github.com/en/developers
+
+GitHub System Status Page
+https://www.githubstatus.com/
+
+Security at GitHub
+https://github.com/security
+
+GitHub Security Advisories
+https://github.com/advisories

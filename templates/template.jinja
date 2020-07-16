@@ -1,0 +1,389 @@
+{%- macro process_folder(folder, top_level=False) %}
+      <div class="wrap-collabsible">
+        <input id="collapsible_{{ folder['folder_id'] }}" class="toggle" type="checkbox" {%+ if top_level %}checked{% endif %}>
+        <label for="collapsible_{{ folder['folder_id'] }}" class="lbl-toggle">{{ folder['folder_id'] }}</label>
+      <div class="collapsible-content" name="{{ folder['folder_id'] }}">
+        <div class="content-inner">
+        {%- for child_id in folder['children'] -%}
+            {{- process_folder(bookmark_collection['folders'][child_id]) -}}
+        {%- endfor -%}
+        <ul>
+        {%- for bookmark in folder['bookmarks'] %}
+          <li class="link">
+            <a title="{{ bookmark['title'] }}" href="{{ bookmark['link'] }}">
+              <img src="favicons/{{ bookmark['domain'] }}/favicon.png" width="16" height="16px" class="favorite"/>
+              {{ bookmark['title'] }}
+            </a>
+          </li>
+        {%- endfor %}
+        </div>
+        </ul>
+      </div>
+     </div>
+{%- endmacro -%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="default_favicon.png"/>
+    <!-- https://alligator.io/css/collapsible/ -->
+    <style>
+body {
+    line-height: 1.25;
+    font-size: 15px;
+    background: #fdfffd;
+}
+
+.wrap-collabsible {
+ border: 1px solid #ddd;
+ margin: 1px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  padding: 1px;
+  margin: 1px;
+
+  color: #141;
+  background: #dfd;
+
+  transition: all 0.25s ease-out;
+
+  border: 1px solid #9a9;
+}
+
+.lbl-toggle:hover {
+  color: #393;
+  background: #afa;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-left: 8px;
+  transform: translateY(-2px);
+
+  transition: transform .1s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100%;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  padding: 1px;
+}
+
+
+
+
+
+.main{
+  display: table;
+  width: 100%;
+}
+
+.column {
+    width: 25%;
+    display: table-cell;
+    padding-right: 1px;
+    margin: 1px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+li {
+    display: flex;
+    max-width: 272px;
+    margin: 0;
+}
+
+li a {
+    overflow: hidden;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+img {
+    margin-left: 1px;
+    margin-right: 3px;
+}
+
+a:link {
+    color: #161;
+    text-decoration: none;
+}
+a:visited {
+    color: #161;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+    background-color: #afa;
+    text-decoration: underline;
+}
+a:active {
+    color: #9f9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+    </style>
+  </head>
+  <body>
+    <span>
+<form action="http://www.google.com/search?hl=en-GB&source=hp&q=" method="get" id="start_search_url_form" autocomplete="off">
+    <div class="autocomplete">
+      <input type="text" name="q" id="start_search_url_box" size="184" autofocus/>
+      <input type="submit" value="Proceed!" id="start_search_url_button"/>
+    </div>
+</form>
+    </span>
+    <div class="main">
+    {%- for column in bookmark_collection['columns'] %}
+    <div class="column">
+      {% for folder_id in column %}
+        {{ process_folder(bookmark_collection['folders'][folder_id], True) }}    
+      {% endfor %}
+    </div>
+    {% endfor -%}
+    </div>
+    <script>
+
+
+let coll = document.getElementsByClassName("collapsible_header");
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+};
+
+let start_search_url_form = document.getElementById("start_search_url_form");
+let start_search_url_box = document.getElementById("start_search_url_box");
+
+let autocompletes = {{ bookmark_collection.GetAutocompletes() }};
+
+// https://www.w3schools.com/howto/howto_js_autocomplete.asp
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;``
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].type_text.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "";
+          if (arr[i].domain.length > 0) {
+            b.innerHTML += ' <img src="favicons/' + arr[i].domain + '/favicon.png" width="16" height="16px"/>';
+          }
+          b.innerHTML += "<strong>" + arr[i].type_text.substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].type_text.substr(val.length);
+          if (arr[i].title.length > 0) {
+            b.innerHTML += " <strong> " + arr[i].title + "</strong>";
+          }
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i].url + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              // inp.value = this.getElementsByTagName("input")[0].value;
+              inp.value = this.getElementsByTagName("input")[0].value;
+
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+              if (inp.value.startsWith("http://") || inp.value.startsWith("https://")) {
+                window.location.replace(inp.value);
+              } else {
+                start_search_url_form.submit();
+              }
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+          return;
+        }
+        if (x) {
+            if(x[0]) { 
+                // if nothing is highlighted, sim-click the top
+                // there will never be an external search for a full-url autocomplete
+                x[0].click();   
+                return;
+            }       
+        }
+        start_search_url_form.submit();
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+  /*close all autocomplete lists in the document,
+  except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+};
+
+autocomplete(document.getElementById("start_search_url_box"), autocompletes);
+
+
+let myLabels = document.querySelectorAll('.lbl-toggle');
+
+// TODO: WASD / HJKL keyboard navigation goes here.
+// Array.from(myLabels).forEach(label => {
+//   label.addEventListener('keydown', e => {
+//     // 32 === spacebar
+//     // 13 === enter
+//     if (e.which === 32 || e.which === 13) {
+//       e.preventDefault();
+//       label.click();
+//     };
+//   });
+// });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BOOKMARKS_DIRECTORY=$1
+OUTPUT_PATH=$2
+
+source ~/venvs/bookmark_startpage/bin/activate
+
+python render_startpage.py -d ${BOOKMARKS_DIRECTORY}/ ${OUTPUT_PATH}/

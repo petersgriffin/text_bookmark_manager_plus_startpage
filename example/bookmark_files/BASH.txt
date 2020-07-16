@@ -1,0 +1,5 @@
+Bash Pitfalls
+http://mywiki.wooledge.org/BashPitfalls
+
+Shell Style Guide (Google)
+https://google.github.io/styleguide/shellguide.html

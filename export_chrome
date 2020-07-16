@@ -1,0 +1,7 @@
+#!/bin/bash
+
+USERNAME=$1
+
+source ~/venvs/bookmark_startpage/bin/activate
+
+python export_chrome.py "/Users/${USERNAME}//Library/Application Support/Google/Chrome/Default/Bookmarks" export/

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+python3 -m venv ~/venvs/bookmark_startpage
+
+source ~/venvs/bookmark_startpage/bin/activate
+
+# pip download --require-hashes --no-cache-dir -r requirements.txt
+
+pip install --require-hashes -r requirements.txt

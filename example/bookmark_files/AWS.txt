@@ -1,0 +1,11 @@
+AWS Command Line Interface Documentation
+https://docs.aws.amazon.com/cli/index.html
+
+AWS Elastic Compute Cloud -- Storage Guide
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html
+
+AWS Lambda Documentation
+https://docs.aws.amazon.com/lambda/
+
+Amazon Elasticsearch Service Documentation
+https://docs.aws.amazon.com/elasticsearch-service/

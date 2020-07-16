@@ -1,0 +1,14 @@
+Writing Idiomatic Python (book)
+https://www.jeffknupp.com/writing-idiomatic-python-ebook/
+
+wtfpython -- Exploring and understanding Python through surprising snippets
+https://github.com/satwikkansal/wtfpython/blob/master/README.md
+
+Nifty Python tricks
+https://yasoob.me/2015/04/19/nifty-python-tricks/
+
+Jinja -- templating language for Python
+https://jinja.palletsprojects.com/en/2.11.x/
+
+Flask -- lightweight WSGI web application framework
+https://flask.palletsprojects.com/en/1.1.x/

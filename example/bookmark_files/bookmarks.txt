@@ -1,0 +1,6 @@
+Tufte CSS
+http://www.daveliepmann.com/tufte-css/
+
+Pro Git (book) by Scott Chacon and Ben Straub
+https://www.git-scm.com/book/en/v2
+

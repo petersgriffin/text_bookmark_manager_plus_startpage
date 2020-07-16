@@ -1,0 +1,23 @@
+PEP 8 -- Style Guide for Python Code
+https://www.python.org/dev/peps/pep-0008/
+
+PEP 20 -- The Zen of Python
+https://www.python.org/dev/peps/pep-0020/
+
+PEP 257 -- Docstring Conventions
+https://www.python.org/dev/peps/pep-0257/
+
+PEP 428 -- The pathlib module -- object-oriented filesystem paths
+https://www.python.org/dev/peps/pep-0428/
+
+PEP 484 -- Type Hints
+https://www.python.org/dev/peps/pep-0484/
+
+PEP 498 -- Literal String Interpolation
+https://www.python.org/dev/peps/pep-0498/
+
+PEP 526 -- Syntax for Variable Annotations
+https://www.python.org/dev/peps/pep-0526/
+
+PEP 3120 -- Using UTF-8 as the default source encoding (3.0)
+https://www.python.org/dev/peps/pep-3120/

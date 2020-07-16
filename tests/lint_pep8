@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source ~/venvs/bookmark_startpage/bin/activate
+
+pycodestyle pgbookmarks --show-source \
+                        --max-line-length=80 \
+                        --ignore=None
+
+pycodestyle export_chrome.py  --show-source \
+                              --max-line-length=80 \
+                              --ignore=None
+
+pycodestyle render_startpage.py  --show-source \
+                                 --max-line-length=80 \
+                                 --ignore=None
