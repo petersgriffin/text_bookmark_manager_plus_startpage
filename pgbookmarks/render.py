@@ -27,7 +27,7 @@ def WriteStartpageFile(html, output_directory):
 
     target_path = os.path.join(output_directory, STARTPAGE_FILENAME)
 
-    with open(target_path, "w") as html_output_file:
+    with open(target_path, 'w') as html_output_file:
         print(html, file=html_output_file)
 
 
