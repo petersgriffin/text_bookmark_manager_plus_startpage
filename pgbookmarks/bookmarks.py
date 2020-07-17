@@ -58,8 +58,13 @@ class Bookmark_Collection:
         self.columns = []
 
     def GetAllBookmarks(self):
+        """ doing the overall sort here, as all bookmarks is currently only
+            used to render the autocompletes in the JavaScript.
+        """
         lists = [folder.bookmarks for folder in self.folders.values()]
-        return list(itertools.chain.from_iterable(lists))
+        all_bookmarks = list(itertools.chain.from_iterable(lists))
+        all_bookmarks.sort(key=lambda x: x.link, reverse=True)
+        return all_bookmarks
 
     def GetAutocompletes(self):
         autocompletes = []
