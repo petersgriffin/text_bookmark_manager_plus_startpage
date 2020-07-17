@@ -33,14 +33,13 @@ from the standard bookmarks textfiles.
     parser.add_argument("--dry-run", action='store_true',
                         help="Reads and processess site, skips writing files.")
 
+    parser.print_usage = parser.print_help
     args = parser.parse_args()
 
     if args.verbosity:
         logger.setLevel(level=logging.DEBUG)
     else:
         logger.setLevel(level=logging.INFO)
-
-    logger.debug("Debug: ON")
 
     source_directory = os.path.abspath(args.source_directory)
     output_directory = os.path.abspath(args.output_directory)

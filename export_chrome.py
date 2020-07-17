@@ -57,6 +57,7 @@ OSX Chome default Bookmark location:
     parser.add_argument("--dry-run", action='store_true',
                         help="Reads and processess site, skips writing files.")
 
+    parser.print_usage = parser.print_help
     args = parser.parse_args()
 
     if args.verbosity:
