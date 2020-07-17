@@ -43,11 +43,11 @@ Program overrwites files each run.
 
 
 
-### Google New Tab shortcut override in Mac OSX 10.12.6
+### Google New Tab shortcut override in Mac OSX 10.12.6+
 
 Removes need to install a 3rd party browser extension to change the page opened when a new tab is opened (!!!)
 
-###### Automator application
+#### Automator application
 1. File dropdown menu
 2. choose 'New'
 3. choose 'Service'
@@ -56,14 +56,14 @@ Removes need to install a 3rd party browser extension to change the page opened 
 6. Save, name it something unique like 'Custom Chrome New Tab Page'
 
 
-###### System Preferences / Security and Privacy
+#### System Preferences / Security and Privacy
 1. Privacy Tab (far right along the top)
 2. Accessibility (in list on the left)
 3. Open lock on bottom-left as admin to allow changes
 4. Add the 'Automator' to the list of 'Allow the apps below to control your computer'
 
 
-###### System Preferences / Keyboard
+#### System Preferences / Keyboard
 1. Shortcuts Tab (middle of the top)
 2. Services (in the list on the left)
 3. Assign a keyboard shortcut of CMD-T to 'Custom Chrome New Tab Page'
